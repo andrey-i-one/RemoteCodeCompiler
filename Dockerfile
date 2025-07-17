@@ -5,10 +5,9 @@ WORKDIR /compiler
 COPY . .
 RUN ["mvn", "clean", "install", "-Dmaven.test.skip=true"]
 
-
 # Run stage
 
-FROM openjdk:11.0.6-jre-slim
+FROM harbor.stageogip.ru/hub/bellsoft/liberica-openjdk-debian:11.0.27
 WORKDIR /compiler
 
 USER root
