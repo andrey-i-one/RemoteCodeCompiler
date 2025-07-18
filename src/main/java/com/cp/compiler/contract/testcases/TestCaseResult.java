@@ -34,11 +34,13 @@ public class TestCaseResult {
      * @param expectedOutput    the expected output
      * @param executionDuration the execution duration
      */
-    public TestCaseResult(Verdict statusResponse,
+    public TestCaseResult(String id,
+                          Verdict statusResponse,
                           String output,
                           String error,
                           String expectedOutput,
                           int executionDuration) {
+        this.id = id;
         this.verdict = statusResponse;
         this.verdictStatusCode = statusResponse.getStatusCode();
         this.statusResponse = statusResponse.getStatusResponse();
@@ -57,12 +59,16 @@ public class TestCaseResult {
     @JsonIgnore
     @ApiModelProperty(notes = "The verdict enum")
     private Verdict verdict;
-    
+
+    @ApiModelProperty(notes = "The test id")
+    @JsonProperty("id")
+    private String id;
+
     @ApiModelProperty(notes = "The value can be one of these : Accepted, Wrong Answer, " +
             "Compilation Error, Runtime Error, Out Of Memory, Time Limit Exceeded")
     @JsonProperty("verdict")
     private String statusResponse;
-    
+
     @ApiModelProperty(notes = "The corresponding status code of the status response")
     @JsonProperty("verdictStatusCode")
     private int verdictStatusCode;

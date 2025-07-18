@@ -48,7 +48,7 @@ public class CompilerProxy implements CompilerService {
     @Value("${compiler.execution-time.min:0}")
     private int minExecutionTime;
     
-    @Value("${compiler.max-test-cases:20}")
+    @Value("${compiler.max-test-cases:300}")
     private int maxNumberOfTestCases;
     
     @Autowired

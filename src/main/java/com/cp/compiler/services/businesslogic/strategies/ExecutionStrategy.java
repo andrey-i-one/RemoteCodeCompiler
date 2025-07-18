@@ -224,6 +224,7 @@ public abstract class ExecutionStrategy {
             ContainerHelper.cleanStdErrOutput(containerOutput, execution);
             
             return new TestCaseResult(
+                    testCaseId,
                     verdict,
                     containerOutput.getStdOut(),
                     containerOutput.getStdErr(),
@@ -238,6 +239,7 @@ public abstract class ExecutionStrategy {
             ContainerHelper.logContainerInfo(containerName, containerInfo);
             
             return new TestCaseResult(
+                    testCaseId,
                     Verdict.TIME_LIMIT_EXCEEDED,
                     "",
                     "The execution exceeded the time limit",

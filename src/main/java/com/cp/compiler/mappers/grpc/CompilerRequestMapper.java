@@ -11,6 +11,7 @@ import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -43,14 +44,12 @@ public interface CompilerRequestMapper {
     }
 
     @Named("toTestCases")
-    static LinkedHashMap<String, TestCase> toTestCases(
+    static List<TestCase> toTestCases(
             Map<String, CompilerProto.RemoteCodeCompilerRequest.TestCase> testCases) {
 
-        return new LinkedHashMap<>(testCases.entrySet()
-                                            .stream()
-                                            .collect(Collectors.toMap(
-                                                        Map.Entry::getKey, entry -> new TestCase(
-                                                                entry.getValue().getInput(),
-                                                                entry.getValue().getExpectedOutput()))));
+        return testCases.entrySet()
+                    .stream()
+                    .map(entry -> new TestCase(entry.getKey(), entry.getValue().getInput(), entry.getValue().getExpectedOutput()))
+                    .collect(Collectors.toList());
     }
 }

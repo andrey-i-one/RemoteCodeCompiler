@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertNotNull;
@@ -86,7 +87,7 @@ public class CompilerRequestMapperTests {
                 .build());
 
         // Call the mapper method
-        LinkedHashMap<String, TestCase> mappedTestCases = CompilerRequestMapper.toTestCases(protoTestCases);
+        List<TestCase> mappedTestCases = CompilerRequestMapper.toTestCases(protoTestCases);
 
         // Assertions
         assertNotNull(mappedTestCases);

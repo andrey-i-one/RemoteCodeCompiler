@@ -64,7 +64,7 @@ public class RemoteCodeCompilerRequest {
     @ApiModelProperty(notes = "The test cases")
     @NonNull
     @JsonProperty("testCases")
-    protected LinkedHashMap<String, TestCase> testCases; // Note: test cases should be given in order
+    protected List<TestCase> testCases; // Note: test cases should be given in order
     
     /**
      * Gets source code.

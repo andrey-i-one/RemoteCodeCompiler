@@ -44,10 +44,10 @@ public abstract class TestCaseMapper {
      * @return the list
      * @throws IOException the io exception
      */
-    public static List<TransformedTestCase> toConvertedTestCases(Map<String, TestCase> testCases) throws IOException {
+    public static List<TransformedTestCase> toConvertedTestCases(List<TestCase> testCases) throws IOException {
         List<TransformedTestCase> convertedTestCases = new ArrayList<>();
-        for (String id : testCases.keySet()) {
-            convertedTestCases.add(toConvertedTestCase(testCases.get(id), id));
+        for (TestCase test: testCases) {
+            convertedTestCases.add(toConvertedTestCase(test, test.getId()));
         }
         return convertedTestCases;
     }

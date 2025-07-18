@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 @Service
@@ -71,11 +72,11 @@ public class ExecutionServiceDefault implements ExecutionService {
     
     private RemoteCodeCompilerRequest createRequest(Problem problem, ProblemExecution problemExecution) {
         
-        var testCases = new LinkedHashMap<String, TestCase>();
+        var testCases = new ArrayList<TestCase>();
         int index = 0;
         
         for (TestCase testCase : problem.getTestCases()) {
-            testCases.put(String.valueOf(index++), testCase);
+            testCases.add(testCase);
         }
         
         return new RemoteCodeCompilerRequest(
